@@ -8,10 +8,11 @@ import { Ionicons } from '@expo/vector-icons';
 import MainScreen from '../screens/HomeScreen';
 import SecondScreen from '../screens/SecondScreen';
 import Test1Screen from '../screens/Test1Screen';
-import ThirdScreen from '../screens/ThirdScreen';
+import EmergencyScreen from '../screens/EmergencyScreen';
 import Test2Screen from '../screens/Test2Screen';
 import Test3Screen from '../screens/Test3Screen';
 import FirstScreen from '../screens/FirstScreen';
+import NotificationFull from '../screens/NotificationFull';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -23,6 +24,7 @@ export default function AppNavigator() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="FirstScreen" component={FirstScreen} />
         <Stack.Screen name="MainTab" component={MainTab} />
+        <Stack.Screen name="NotificationFull" component={NotificationFull} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -33,6 +35,7 @@ function MainStack() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Main" component={MainScreen} />
       <Stack.Screen name="Test1" component={Test1Screen} options={{ title: 'หน้าทดสอบ 1' }} />
+      <Stack.Screen name="NotificationFull" component={NotificationFull} />
     </Stack.Navigator>
   );
 }
@@ -42,15 +45,17 @@ function SecondStack() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Main" component={SecondScreen} options={{ title: 'พื้นที่เสี่ยง' }} />
       <Stack.Screen name="Test2" component={Test2Screen} options={{ title: 'หน้าทดสอบ 2' }} />
+      <Stack.Screen name="NotificationFull" component={NotificationFull} />
     </Stack.Navigator>
   );
 }
 
 function ThirdStack() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Main" component={ThirdScreen} options={{ title: 'แจ้งเหตุ' }} />
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Main" component={EmergencyScreen} options={{ title: 'แจ้งเหตุ' }} />
       <Stack.Screen name="Test3" component={Test3Screen} options={{ title: 'หน้าทดสอบ 3' }} />
+      <Stack.Screen name="NotificationFull" component={NotificationFull} />
     </Stack.Navigator>
   );
 }

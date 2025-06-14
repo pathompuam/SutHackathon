@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('window');
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const [sidebarVisible, setSidebarVisible] = useState(false);
 
   return (
@@ -32,29 +32,32 @@ export default function HomeScreen() {
         {/* แจ้งเตือนล่าสุด */}
         <View style={styles.alertSection}>
           <Text style={styles.sectionTitle}>แจ้งเตือนเหตุล่าสุด</Text>
-          <TouchableOpacity><Text style={styles.viewAll}>ดูข่าวทั้งหมด</Text></TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.viewAll}>ดูข่าวทั้งหมด</Text>
+          </TouchableOpacity>
         </View>
         {/* ...existing code... */}
-        <View style={styles.alertBoxRed}>
+        <TouchableOpacity style={styles.alertBoxRed} onPress={() => { /* handle press */ }}>
           <Text style={styles.alertText}>
             🔴 [เตือนภัยจากสภ.เมืองนครราชสีมา] เหตุการณ์ใช้อาวุธบริเวณหน้าตลาดสุรนารี...
           </Text>
           <Text style={styles.alertTime}>12/06/68 12.06 น. ตำบลสุรนารี</Text>
-        </View>
-        <View style={styles.alertBoxYellow}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.alertBoxYellow} onPress={() => { /* handle press */ }}>
           <Text style={styles.alertText}>
             🟡 [เตือนภัยจากสภ.เมืองนครราชสีมา] มีรถประสานงาอย่างแรง...
           </Text>
           <Text style={styles.alertTime}>12/06/68 12.06 น. ตำบลสุรนารี</Text>
-        </View>
+        </TouchableOpacity>
         {/* สถิติ */}
         <View style={styles.statSection}>
           <View style={styles.statHeader}>
             <Text style={styles.sectionTitle}>สถิติ</Text>
-            <TouchableOpacity><Text style={styles.viewAll}>ดูสถิติอื่น ๆ</Text></TouchableOpacity>
+            <TouchableOpacity>
+              <Text style={styles.viewAll}>ดูสถิติอื่น ๆ</Text>
+            </TouchableOpacity>
           </View>
           <Text>จำนวนคดีอุบัติเหตุจราจรทางบก</Text>
-          <Image source={require('C:\\Users\\Lenovo\\OneDrive\\Desktop\\Work\\Hackthon Test 2\\Hackathin\\assets\\images\\statgraph.png')} style={styles.chartImage} resizeMode="contain" />
         </View>
       </ScrollView>
 
@@ -68,21 +71,32 @@ export default function HomeScreen() {
                 <Ionicons name="close" size={28} color="#fff" />
               </TouchableOpacity>
             </View>
+
             <View style={sidebarStyles.menu}>
-              <View style={sidebarStyles.menuItem}>
+              <TouchableOpacity style={sidebarStyles.menuItem} onPress={() => { /* handle profile press */ }}>
                 <Ionicons name="person" size={22} color="#801313" style={{ marginRight: 10 }} />
                 <Text style={sidebarStyles.menuText}>โปรไฟล์</Text>
-              </View>
-              <View style={sidebarStyles.menuItem}>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+              style={sidebarStyles.menuItem}
+              onPress={() => navigation.navigate('NotificationFull')}>
+              <Ionicons name="notifications-circle" size={22} color="#801313" style={{ marginRight: 10 }} />
+              <Text style={sidebarStyles.menuText}>แจ้งเตือนเหตุล่าสุด</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={sidebarStyles.menuItem} onPress={() => { /* handle stats press */ }}>
                 <Ionicons name="stats-chart" size={22} color="#801313" style={{ marginRight: 10 }} />
                 <Text style={sidebarStyles.menuText}>สถิติ</Text>
-              </View>
-              <View style={sidebarStyles.menuItem}>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={sidebarStyles.menuItem} onPress={() => { /* handle news press */ }}>
                 <Ionicons name="newspaper" size={22} color="#801313" style={{ marginRight: 10 }} />
                 <Text style={sidebarStyles.menuText}>ข่าวสาร</Text>
-              </View>
+              </TouchableOpacity>
+
             </View>
-            <TouchableOpacity style={sidebarStyles.logoutBtn}>
+            <TouchableOpacity style={sidebarStyles.logoutBtn} onPress={() => { /* handle logout */ }}>
               <Text style={sidebarStyles.logoutText}>LOG OUT</Text>
             </TouchableOpacity>
           </View>

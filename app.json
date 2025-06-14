@@ -30,6 +30,9 @@
       "eas": {
         "projectId": "f6760799-9ea2-4eb6-b145-b5b6997974d0"
       }
-    }
+    },
+    "plugins": [
+      "react-native-edge-to-edge"
+    ]
   }
 }
